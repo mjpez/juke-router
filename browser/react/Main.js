@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import Footer from './Footer'
+import AllAlbums from './AllAlbums'
 
 class Main extends React.Component {
   constructor(props) {
@@ -24,21 +25,7 @@ class Main extends React.Component {
         <div className="col-xs-10">
           <div className="row">
           <h3>Albums</h3>
-          {this.state.albums.map((album, i) => {
-            return (
-              <div key={i} className="col-xs-4">
-                <a className="thumbnail" href="#">
-                  <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=ALBUMoneIMAGE&w=300&h=300" />
-                  <div className="caption">
-                    <h5>
-                      <span>{album.name}</span>
-                    </h5>
-                    <small>NUMBER OF SONGS HERE songs</small>
-                  </div>
-                </a>
-              </div>)
-            })
-          }
+          <AllAlbums />
           </div>
         </div>
         <Footer />
