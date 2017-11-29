@@ -2,37 +2,7 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import Footer from './Footer'
 import AllAlbums from './AllAlbums'
-
-class Main extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      crypto: 'Bitcoin',
-      albums: fakeAlbums
-    }
-
-    let listNames = this.state.albums.map(album => album.name)
-  }
-
-  render(){
-    return (
-      <div id="main" className="container-fluid">
-        <div className="col-xs-2">
-          <Sidebar />
-        </div>
-
-        <div className="col-xs-10">
-          <div className="row">
-          <h3>Albums</h3>
-          <AllAlbums />
-          </div>
-        </div>
-        <Footer />
-      </div>
-    )
-  }
-}
+import axios from 'axios'
 
 const fakeAlbums = [
   {
@@ -88,6 +58,36 @@ const fakeAlbums = [
   }
 ];
 
-// const listNames = fakeAlbums.map(album => album.name)
+class Main extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      albums: []
+    }
+  }
+
+  componentDidMount() {
+    const log = console.logbind(console)
+    axios.get('/api/albums')
+      .then(response => response.data)
+      .then(albums => this.setState({albums}))
+  }
+
+  render(){
+    return (
+      <div id="main" className="container-fluid">
+        <div className="col-xs-2">
+          <Sidebar />
+        </div>
+        <div className="col-xs-10">
+          <AllAlbums albums={this.state.albums} />
+        </div>
+        <Footer />
+      </div>
+    )
+  }
+}
+
 
 export default Main
