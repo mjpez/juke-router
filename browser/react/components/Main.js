@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import AllAlbums from './AllAlbums';
 import StatefulAlbums from './StatefulAlbums'
 import SingleAlbum from './SingleAlbum';
-import AllArtists from './AllArtists';
+import AllArtists from './AllArtists'
 import Sidebar from './Sidebar';
 import Player from './Player';
 import { HashRouter, Route, Link, Switch } from 'react-router-dom';

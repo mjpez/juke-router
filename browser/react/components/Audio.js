@@ -15,7 +15,7 @@
  *
  */
 import React, { Component } from 'react';
-import Main from './Main';
+import Main from './Main'
 
 // creates the Audio element
 // While the Audio element is part of HTML5, it doesn't `visually` show up anywhere in the DOM.

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SingleArtist from './SingleArtist';
+import SingleArtist from './SingleArtist'
 
 export default class AllArtists extends Component {
   constructor(props) {

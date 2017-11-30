@@ -2,7 +2,7 @@ import React from 'react';
 
 const Songs = (props) => {
 
-  const songs = props.songs;
+  const songs = props.songs
 
   return (
     <table className='table'>
