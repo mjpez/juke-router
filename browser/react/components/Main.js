@@ -24,7 +24,7 @@ export default class Main extends Component {
           <div className="col-xs-10">
               <Route exact path='/albums/:albumId' component={SingleAlbum} />
               <Route exact path='/albums' component={StatefulAlbums} />
-              <Route exact path='/artists/:artistId' component={SingleArtist} />
+              <Route path='/artists/:artistId' component={SingleArtist} />
               <Route exact path='/artists' component={AllArtists} />
               <Route exact path='/' component={StatefulAlbums} />
           </div>

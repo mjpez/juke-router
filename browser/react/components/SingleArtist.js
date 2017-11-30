@@ -44,9 +44,8 @@ export default class SingleArtist extends Component {
   }
 
   render() {
-    console.log(this.props)
     const artist = this.state.artist; // or however you've named it
-
+    console.log('single artist rendering')
     return (
       <div>
         <h3>{artist.name}</h3>
@@ -55,8 +54,8 @@ export default class SingleArtist extends Component {
           <li><Link to={'/artists/' + artist.id + '/songs'}>SONGS</Link></li>
         </ul>
         <Switch>
-          <Route path={this.props.location.pathname + '/albums'} render={() => (<AllAlbums albums={this.state.artistAlbums} />)} />
-          <Route path='/artists/:artistId/songs' render={() => <Songs songs={this.state.artistSongs} />} />
+          <Route path= {'/artists/' + artist.id + '/albums'} render={() => (<AllAlbums albums={this.state.artistAlbums} />)} />
+          <Route path= {'/artists/' + artist.id +'/songs'} render={() => <Songs songs={this.state.artistSongs} />} />
         </Switch>
         </div>
     );
