@@ -3,6 +3,7 @@ import axios from 'axios';
 import AllArtists from './AllArtists'
 import AllAlbums from './AllAlbums';
 import Songs from './Songs'
+import { Link, Route, HashRouter, Switch } from 'react-router-dom'
 
 export default class SingleArtist extends Component {
   constructor(props) {
@@ -27,7 +28,6 @@ export default class SingleArtist extends Component {
       })
       .then(res => res.data)
       .then(artistAlbums => {
-        console.log(artistAlbums)
         this.setState({ artistAlbums })
         return axios.get(`/api/artists/${artistId}/songs`)
       })
@@ -44,13 +44,21 @@ export default class SingleArtist extends Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props)
+    const artist = this.state.artist; // or however you've named it
+
     return (
       <div>
-        <h3>{this.state.artist.name}</h3>
-        <AllAlbums albums={this.state.artistAlbums} />
-        <Songs songs={this.state.artistSongs}/>
-      </div>
-    )
+        <h3>{artist.name}</h3>
+        <ul className="nav nav-tabs">
+          <li><Link to={'/artists/' + artist.id + '/albums'}>ALBUMS</Link></li>
+          <li><Link to={'/artists/' + artist.id + '/songs'}>SONGS</Link></li>
+        </ul>
+        <Switch>
+          <Route path={this.props.location.pathname + '/albums'} render={() => (<AllAlbums albums={this.state.artistAlbums} />)} />
+          <Route path='/artists/:artistId/songs' render={() => <Songs songs={this.state.artistSongs} />} />
+        </Switch>
+        </div>
+    );
   }
 }
